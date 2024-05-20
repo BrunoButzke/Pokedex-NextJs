@@ -63,6 +63,7 @@ const IndexPage = () => {
        filteredData.push(pokemonData[i]);
      }
     }  
+    setCurrentIndex(0);
     return filteredData;
    }
 

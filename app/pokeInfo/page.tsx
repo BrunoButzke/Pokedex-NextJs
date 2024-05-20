@@ -46,9 +46,11 @@ const IndexPage = (params: any) => {
           </div>
           <div className={`w-64 ${divStyle}`}>Tipo(s): {pokemonData.types.map((item) => {return " " + item.type.name}).toString()}</div>
           <div className={`w-64 ${divStyle}`}>Habilidades: {pokemonData.abilities.map((item) => {return " " + item.ability.name}).toString()}</div>
-          <button className={`w-64 h-8 relative top-28 right-5 ${btnStyle}`} >
-            <Link href={'/'}>Voltar</Link> 
-          </button>
+          <Link href={'/'}>
+            <button className={`w-64 h-8 relative top-28 right-5 ${btnStyle}`} >
+              Voltar
+            </button>
+          </Link> 
         </div>  
         }   
       </div>
