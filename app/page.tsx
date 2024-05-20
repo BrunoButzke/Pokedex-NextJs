@@ -1,5 +1,5 @@
 "use client"
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 const IndexPage = () => {
@@ -53,16 +53,12 @@ const IndexPage = () => {
 
   function searchTable(value: string) {
     const filteredData: never[] = [];
-  
     if (value.length === 0) {
       return pokemonData; 
     }
-   
     for (let i = 0; i < pokemonData.length; ++i) {
      const newValue = value.toLowerCase();
-   
      const user = pokemonData[i].name.toLowerCase();
-   
      if (user.includes(newValue)) {
        filteredData.push(pokemonData[i]);
      }
@@ -80,14 +76,12 @@ const IndexPage = () => {
 
   const renderItems = () => {
     return itens.slice(currentIndex - (currentIndex === 0 ? 0 : 1) , currentIndex + (currentIndex === 0 ? 3 : 2)).map((item, index) => {
-      let fontSize = "text-xs";
-      let cardSize = "w-52 h-9";
+      let cardStyle = "w-52 h-9 text-xs";
       if ((currentIndex == 0 && index == 0) || (currentIndex != 0 && index == 1)) {
-        fontSize = "text-xl font-bold";
-        cardSize = "w-60 h-11";
+        cardStyle = "w-60 h-11 text-xl font-bold";
       }
       return (
-        <div key={index} id={`item-${index}`} className={`py-2 my-1 bg-slate-100 text-center rounded-md  ${fontSize} ${cardSize}`}>
+        <div key={index} id={`item-${index}`} className={`py-2 my-1 bg-slate-100 text-center rounded-md  ${cardStyle}`}>
           {item.name}
         </div>
       );
@@ -107,7 +101,7 @@ const IndexPage = () => {
   return (
     <div className="bg-gradient-to-b from-cyan-500 to-white-500">
       <div className="flex flex-col items-center justify-center h-screen bg-center bg-no-repeat bg-[url('../public/pokedexAlt.png')]">
-        <div className="relative bottom-0 right-5">
+        <div className="relative right-5">
           <div className="h-40 w-60">
             <div className="flex flex-col justify-center items-center">
               {renderItems().length ? renderItems() : (error ?? info)}
